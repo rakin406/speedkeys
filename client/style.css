@@ -3,14 +3,16 @@
 * {
   box-sizing: border-box;
 }
-
 html {
   font-family: Rubik,sans-serif;
   color: #fff;
 }
-
 html, body {
   background-color: #111111;
+}
+
+div {
+  display: block;
 }
 
 .container {
@@ -29,4 +31,30 @@ h1 {
   margin-block-end: 0.67em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+
+/* Navigation bar */
+#nav-container {
+  margin-top: -3.0rem;
+  min-height: 10rem;
+}
+nav {
+  display: block;
+  text-align: center;
+  margin: 3rem 0;
+}
+nav a {
+  background-color: #116AB3;
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0.35rem;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  transition: .2s;
+  cursor: pointer;
+}
+nav a:hover {
+  background-color: #1585e0;
 }
