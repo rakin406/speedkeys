@@ -5,10 +5,10 @@
 }
 html {
   font-family: Rubik,sans-serif;
-  color: #fff;
+  color: #000;
 }
 html, body {
-  background-color: #111111;
+  background-color: #EFE7E6;
 }
 
 div {
@@ -22,6 +22,7 @@ div {
   flex-direction: column;
 }
 
+
 /* Title header */
 h1 {
   font-weight: 600;
@@ -33,8 +34,9 @@ h1 {
   margin-inline-end: 0px;
 }
 
+
 /* Navigation bar */
-#nav-container {
+.nav-container {
   margin-top: -3.0rem;
   min-height: 10rem;
 }
@@ -44,17 +46,59 @@ nav {
   margin: 3rem 0;
 }
 nav a {
-  background-color: #116AB3;
+  background-color: #1585e0;
   display: inline-block;
   white-space: nowrap;
   padding: 0.75rem 1rem;
   margin: 0.75rem 0.35rem;
   border-radius: 4px;
-  color: #fff;
+  color: #000;
   text-decoration: none;
   transition: .2s;
   cursor: pointer;
 }
 nav a:hover {
-  background-color: #1585e0;
+  background-color: #116AB3;
+}
+
+
+/* TODO: Finish bottom bar */
+/* Bottom bar */
+#typing-bar {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem auto;
+  width: 100%;
+  justify-content: center;
+}
+
+.bar-items {
+  display: flex;
+}
+
+#wpm-display-container {
+  width: 8.25rem;
+  padding: 0;
+}
+
+.bar-item {
+  transition: .1s;
+}
+.bar-item {
+  justify-content: center;
+  align-items: center;
+  padding: 0.9rem 2rem;
+  margin: 0.5rem;
+  background-color: #808080;
+  border-radius: 4px;
+}
+
+small {
+  font-size: .7em;
+  font-weight: 400;
+}
+
+#timer-display-container {
+  width: 7rem;
+  padding: 0;
 }
