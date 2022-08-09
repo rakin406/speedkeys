@@ -64,7 +64,7 @@ nav a:hover {
 
 /* TODO: Finish bottom bar */
 /* Bottom bar */
-#typing-bar {
+.bar-items {
   display: flex;
   flex-wrap: wrap;
   margin: 0.5rem auto;
@@ -72,12 +72,8 @@ nav a:hover {
   justify-content: center;
 }
 
-.bar-items {
-  display: flex;
-}
-
 #wpm-display-container {
-  width: 8.25rem;
+  width: 10rem;
   padding: 0;
 }
 
@@ -87,18 +83,13 @@ nav a:hover {
 .bar-item {
   justify-content: center;
   align-items: center;
-  padding: 0.9rem 2rem;
+  text-align: center;
+  padding: 1rem 2rem;
   margin: 0.5rem;
   background-color: #808080;
-  border-radius: 4px;
-}
-
-small {
-  font-size: .7em;
-  font-weight: 400;
+  border-radius: 5px;
 }
 
 #timer-display-container {
   width: 7rem;
-  padding: 0;
 }
