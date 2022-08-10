@@ -7,7 +7,10 @@ this.addEventListener("keydown", (event) => {
         // Check if key press matches character
         if (event.key === text[i].innerText) {
             console.log(event.key); // debugging
-            ++i;
+            text[i].style.color = "#808080";
+        } else {
+            text[i].style.color = "#ff0000";
         }
+        ++i;
     }
 });
