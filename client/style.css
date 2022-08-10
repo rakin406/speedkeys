@@ -63,25 +63,23 @@ nav a:hover {
 
 
 /* Text-box */
-.textbox-container {
-  width: 100%;
-  text-align: center;
-  margin-top: 5rem;
-}
 .textbox {
-  overflow: hidden;
-  resize: none;
-  font-size: 2rem;
-  color: #000;
+  font-size: 0;  /* Remove white space between span tags */
   cursor: text;
   width: 75vw;
   height: 25vh;
-  padding-top: 15px;
-  padding-left: 15px;
+  margin-top: 10vh;
+  margin-left: 12vw;
+  padding-top: 2vh;
+  padding-left: 2vw;
   border: 3px solid #000;
   border-radius: 30px;
   float: none;
   background-color: transparent;
+}
+.text {
+  font-size: 2rem;
+  color: #000;
 }
 
 
