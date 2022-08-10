@@ -13,7 +13,7 @@ this.addEventListener("keydown", (event) => {
         // Check if key press matches the character from text
         if (event.key === text[i].innerText) {
             if (correct == true) {
-                text[i].style.color = "#808080"; // grey if correct
+                text[i].style.color = "#008000"; // green if correct
             } else {
                 text[i].style.color = "#ff0000"; // red if wrong
             }
