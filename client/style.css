@@ -3,12 +3,12 @@
 * {
   box-sizing: border-box;
 }
-html {
+html, body {
   font-family: Rubik,sans-serif;
   color: #000;
-}
-html, body {
   background-color: #EFE7E6;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 div {
@@ -66,8 +66,9 @@ nav a:hover {
 .bar-items {
   display: flex;
   flex-wrap: wrap;
+  position: absolute;
+  top: 83vh;
   margin: 0.5rem auto;
-  margin-top: 29rem;
   width: 100%;
   justify-content: center;
   font-size: 1.8rem;
