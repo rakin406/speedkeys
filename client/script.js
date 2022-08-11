@@ -28,9 +28,19 @@ async function fetchWords() {
         "https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt"
     );  // get a huge >4MB list of words from URL
     let text = await response.text();
-    return text;
+    let words = text.split("\n");
+    let randomText = "";
+
+    // Loop word list and create a randomly generated sentence out of it
+    // NOTE: Max character is 25, because it won't look too big or too small
+    for (let i = 0; i <= 25; ++i) {
+        randomText = randomText.concat(words[i], " ");
+    }
+
+    randomText = randomText.trim();
+    console.log(randomText);
 }
-fetchWords().then((res) => console.log(res));
+fetchWords();
 
 this.addEventListener("keydown", (event) => {
     // Ensure that key press is NOT an excluded special character and also
