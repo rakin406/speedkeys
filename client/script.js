@@ -56,7 +56,10 @@ function colorizeLetter(letter) {
     }
 }
 
-let wordCount = 0;
+let charCount = 0;
+function getAccuracy(typedEntries) {
+    return Math.trunc(typedEntries / 5);
+}
 
 // Start counting time
 function startTimer(duration, display) {
@@ -79,7 +82,7 @@ function startTimer(duration, display) {
 
             // View WPM
             let wpmDisplay = document.querySelector("#wpm");
-            wpmDisplay.textContent = `${wordCount} WPM`;
+            wpmDisplay.textContent = `${getAccuracy(charCount)} WPM`;
         }
     }, 1000);
 }
@@ -128,14 +131,9 @@ document.onkeydown = (event) => {
 
         // Check if key press matches the character from text
         if (event.key === text[i].innerText) {
-            // Number of spaces is the total number of words typed?
-            // TODO: Improve algorithm to find number of words typed
-            if (event.key === " ") {
-                ++wordCount;
-                // console.log(wordCount); // debugging
-            }
             colorizeLetter(text[i]);
             correct = true;
+            ++charCount;
             ++i; // move on to the next character in the text
         } else {
             correct = false;
