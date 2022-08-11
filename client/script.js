@@ -54,7 +54,7 @@ async function fetchWords() {
     let words = text.split("\n");
 
     // Max words is this much so that the text won't look too big or too small
-    const MAX_WORDS = 20;
+    const MAX_WORDS = 15;
     let sentence = createSentence(words, MAX_WORDS);    // generate sentence
     createSpanText(sentence);   // view sentence on page
 }

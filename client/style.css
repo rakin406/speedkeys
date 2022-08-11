@@ -64,14 +64,14 @@ nav a:hover {
 
 /* Text-box */
 .textbox {
-  font-size: 0;  /* Remove white space between span tags */
+  font-size: 0;
   cursor: text;
+  min-height: 100%;
+  overflow: hidden;
   width: 75vw;
-  height: 25vh;
   margin-top: 10vh;
   margin-left: 12vw;
-  padding-top: 2vh;
-  padding-left: 2vw;
+  padding: 30px;
   border: 3px solid #000;
   border-radius: 30px;
   float: none;
