@@ -23,6 +23,8 @@ function createSpanText(word) {
 
 // Scrape words from online
 async function fetchWords() {
+    // TODO: Increase performance of this fetch somehow. Maybe load the next
+    // fetch asynchronously while typing and store the data in an array or something??
     let response = await fetch(
         "https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt"
     ); // get a huge >4MB word list from URL
