@@ -56,9 +56,9 @@ function colorizeLetter(letter) {
     }
 }
 
-let charCount = 0;
-function getAccuracy(typedEntries) {
-    return Math.trunc(typedEntries / 5);
+let charCount = errors = 0;
+function getAccuracy(typedEntries, errors = 0) {
+    return Math.trunc((typedEntries / 5) - errors);
 }
 
 // Start counting time
@@ -82,7 +82,7 @@ function startTimer(duration, display) {
 
             // View WPM
             let wpmDisplay = document.querySelector("#wpm");
-            wpmDisplay.textContent = `${getAccuracy(charCount)} WPM`;
+            wpmDisplay.textContent = `${getAccuracy(charCount, errors)} WPM`;
         }
     }, 1000);
 }
@@ -136,7 +136,11 @@ document.onkeydown = (event) => {
             ++charCount;
             ++i; // move on to the next character in the text
         } else {
-            correct = false;
+            // Error only once, not multiple times
+            if (correct == true) {
+                correct = false;
+                ++errors;
+            }
         }
     }
 }
