@@ -29,6 +29,7 @@ function createSentence(words, max) {
     for (let i = 0; i <= max; ++i) {
         // Get a random word from list and add it to the sentence
         let randomWord = words[Math.floor(Math.random() * words.length)];
+        randomWord = randomWord.trim();
         randomText = randomText.concat(randomWord, " ");
     }
     return randomText.trim();
