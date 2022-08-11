@@ -59,7 +59,7 @@ function colorizeLetter(letter) {
 // Start counting time
 function startTimer(duration, display) {
     let timer = duration, minutes, seconds;
-    let updateInterval = setInterval(function () {
+    let updateInterval = setInterval(() => {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
