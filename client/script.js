@@ -34,6 +34,17 @@ function createSentence(words, max) {
     return randomText.trim();
 }
 
+// Create span tags and put letters in each one of them
+function createSpanText(word) {
+    let textbox = document.getElementById("textbox");
+    for (let letter of word) {
+        let textSpan = document.createElement("span");
+        textSpan.className = "text";    // needed for CSS styling
+        textSpan.innerHTML = letter;
+        textbox.appendChild(textSpan);
+    }
+}
+
 // Scrape words from online
 async function fetchWords() {
     let response = await fetch(
@@ -43,8 +54,9 @@ async function fetchWords() {
     let words = text.split("\n");
 
     // Max words is this much so that the text won't look too big or too small
-    const MAX_WORDS = 25;
-    console.log(createSentence(words, MAX_WORDS)); // debugging
+    const MAX_WORDS = 20;
+    let sentence = createSentence(words, MAX_WORDS);    // generate sentence
+    createSpanText(sentence);   // view sentence on page
 }
 fetchWords();
 
