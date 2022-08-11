@@ -26,19 +26,22 @@ let correct = true;
 async function fetchWords() {
     let response = await fetch(
         "https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt"
-    );  // get a huge >4MB list of words from URL
+    ); // get a huge >4MB word list from URL
     let text = await response.text();
     let words = text.split("\n");
     let randomText = "";
 
-    // Loop word list and create a randomly generated sentence out of it
-    // NOTE: Max character is 25, because it won't look too big or too small
-    for (let i = 0; i <= 25; ++i) {
-        randomText = randomText.concat(words[i], " ");
+    // Loop a number of times and create a randomly generated sentence out of it
+    // NOTE: Max words is 25, so that the text won't look too big or too small
+    const MAX_WORDS = 20;
+    for (let i = 0; i <= MAX_WORDS; ++i) {
+        // Get a random word from list and add it to the sentence
+        let randomWord = words[Math.floor(Math.random() * words.length)];
+        randomText = randomText.concat(randomWord, " ");
     }
 
     randomText = randomText.trim();
-    console.log(randomText);
+    console.log(randomText); // debugging
 }
 fetchWords();
 
