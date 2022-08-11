@@ -40,7 +40,7 @@ function createSpanText(word) {
     let textbox = document.getElementById("textbox");
     for (let letter of word) {
         let textSpan = document.createElement("span");
-        textSpan.className = "text";    // needed for CSS styling
+        textSpan.className = "text"; // needed for CSS styling
         textSpan.innerHTML = letter;
         textbox.appendChild(textSpan);
     }
@@ -56,23 +56,43 @@ async function fetchWords() {
 
     // Max words is this much so that the text won't look too big or too small
     const MAX_WORDS = 15;
-    let sentence = createSentence(words, MAX_WORDS);    // generate sentence
-    createSpanText(sentence);   // view sentence on page
+    let sentence = createSentence(words, MAX_WORDS); // generate sentence
+    createSpanText(sentence); // view sentence on page
 }
 fetchWords();
 
+// Fetch words again
+function reset() {
+    // Remove all previous text or span tags
+    document.querySelectorAll(".text").forEach((el) => {
+        el.remove();
+    });
+    fetchWords();
+    i = 0; // reset index
+}
+
+// Colorize letter based on correct/wrong input
+function colorizeLetter(letter) {
+    // Detect correct and wrong input
+    if (correct == true) {
+        letter.style.color = "#008000"; // green if correct
+    } else {
+        letter.style.color = "#ff0000"; // red if wrong
+    }
+}
+
 this.addEventListener("keydown", (event) => {
+    let lastIndex = text.length - 1;
+    if (i == lastIndex) {
+        reset();
+    }
+
     // Ensure that key press is NOT an excluded special character and also
     // ensure that text length is always higher than the index.
     if (!IGNORED_CHARS.includes(event.key) && i < text.length) {
         // Check if key press matches the character from text
         if (event.key === text[i].innerText) {
-            // Detect correct and wrong input
-            if (correct == true) {
-                text[i].style.color = "#008000"; // green if correct
-            } else {
-                text[i].style.color = "#ff0000"; // red if wrong
-            }
+            colorizeLetter(text[i]);
             correct = true;
             ++i; // move on to the next character in the text
         } else {
