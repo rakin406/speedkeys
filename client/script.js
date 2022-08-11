@@ -59,7 +59,7 @@ function colorizeLetter(letter) {
 // Start counting time
 function startTimer(duration, display) {
     let timer = duration, minutes, seconds;
-    setInterval(function () {
+    let updateInterval = setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
@@ -68,8 +68,9 @@ function startTimer(duration, display) {
 
         display.textContent = minutes + ":" + seconds;
 
+        // Stop timer when it reaches 0
         if (--timer < 0) {
-            timer = duration;
+            clearInterval(updateInterval);
         }
     }, 1000);
 }
