@@ -58,7 +58,9 @@ function colorizeLetter(letter) {
 
 // Start counting time
 function startTimer(duration, display) {
-    let timer = duration, minutes, seconds;
+    let timer = duration,
+        minutes,
+        seconds;
     let updateInterval = setInterval(() => {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
@@ -71,6 +73,7 @@ function startTimer(duration, display) {
         // Stop timer when it reaches 0
         if (--timer < 0) {
             clearInterval(updateInterval);
+            document.onkeydown = null;  // stop recording keys
         }
     }, 1000);
 }
@@ -101,7 +104,7 @@ let text = document.getElementsByClassName("text");
 let i = 0;
 let correct = true;
 
-this.addEventListener("keydown", (event) => {
+document.onkeydown = (event) => {
     let lastIndex = text.length - 1;
     if (i == lastIndex) {
         reset();
@@ -113,7 +116,7 @@ this.addEventListener("keydown", (event) => {
         // Start timer on key press
         if (started == false) {
             let timerDisplay = document.querySelector("#timer");
-            startTimer(59, timerDisplay);   // start counting from one minute
+            startTimer(59, timerDisplay); // start counting from one minute
             started = true;
         }
 
@@ -126,4 +129,4 @@ this.addEventListener("keydown", (event) => {
             correct = false;
         }
     }
-});
+}
