@@ -56,6 +56,8 @@ function colorizeLetter(letter) {
     }
 }
 
+let wordCount = 0;
+
 // Start counting time
 function startTimer(duration, display) {
     let timer = duration,
@@ -68,12 +70,16 @@ function startTimer(duration, display) {
         minutes = minutes < 10 ? minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.textContent = minutes + ":" + seconds;
+        display.textContent = `${minutes}:${seconds}`;
 
         // Stop timer when it reaches 0
         if (--timer < 0) {
             clearInterval(updateInterval);
             document.onkeydown = null;  // stop recording keys
+
+            // View WPM
+            let wpmDisplay = document.querySelector("#wpm");
+            wpmDisplay.textContent = `${wordCount} WPM`;
         }
     }, 1000);
 }
@@ -122,6 +128,12 @@ document.onkeydown = (event) => {
 
         // Check if key press matches the character from text
         if (event.key === text[i].innerText) {
+            // Number of spaces is the total number of words typed?
+            // TODO: Improve algorithm to find number of words typed
+            if (event.key === " ") {
+                ++wordCount;
+                // console.log(wordCount); // debugging
+            }
             colorizeLetter(text[i]);
             correct = true;
             ++i; // move on to the next character in the text
