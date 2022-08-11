@@ -1,28 +1,3 @@
-const IGNORED_CHARS = [
-    "Control",
-    "Meta",
-    "Alt",
-    "ContextMenu",
-    "ArrowLeft",
-    "ArrowRight",
-    "ArrowDown",
-    "ArrowUp",
-    "Shift",
-    "CapsLock",
-    "Backspace",
-    "Insert",
-    "Delete",
-    "Home",
-    "End",
-    "PageUp",
-    "PageDown",
-    "Escape",
-];
-
-let text = document.getElementsByClassName("text");
-let i = 0;
-let correct = true;
-
 // Create a randomly generated sentence
 function createSentence(words, max) {
     let randomText = "";
@@ -81,6 +56,50 @@ function colorizeLetter(letter) {
     }
 }
 
+// Start counting time
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+const IGNORED_CHARS = [
+    "Control",
+    "Meta",
+    "Alt",
+    "ContextMenu",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowDown",
+    "ArrowUp",
+    "Shift",
+    "CapsLock",
+    "Backspace",
+    "Insert",
+    "Delete",
+    "Home",
+    "End",
+    "PageUp",
+    "PageDown",
+    "Escape",
+];
+
+let started = false;
+let text = document.getElementsByClassName("text");
+let i = 0;
+let correct = true;
+
 this.addEventListener("keydown", (event) => {
     let lastIndex = text.length - 1;
     if (i == lastIndex) {
@@ -90,6 +109,13 @@ this.addEventListener("keydown", (event) => {
     // Ensure that key press is NOT an excluded special character and also
     // ensure that text length is always higher than the index.
     if (!IGNORED_CHARS.includes(event.key) && i < text.length) {
+        // Start timer on key press
+        if (started == false) {
+            let timerDisplay = document.querySelector("#timer");
+            startTimer(59, timerDisplay);   // start counting from one minute
+            started = true;
+        }
+
         // Check if key press matches the character from text
         if (event.key === text[i].innerText) {
             colorizeLetter(text[i]);
