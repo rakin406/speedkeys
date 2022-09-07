@@ -1,28 +1,19 @@
 // TODO: Show correct score
-//
 // Utils
-function setScore(score) {
-  // Build the expiration date string
-  const expirationDate = new Date();
-  let scoreString = `score=${score};`;
-  expirationDate.setFullYear(expirationDate.getFullYear() + 1);
-  scoreString = scoreString.concat(` expires=${expirationDate.toUTCString()}`);
-  // Create or update the score
-  document.cookie = scoreString;
+function saveScore(score) {
+  localStorage.setItem("score", score);
 }
 
 function getScore() {
-  const value = `; ${document.cookie}`;
-  const parts = value.split("; score=");
-  if (parts.length === 2) return parts.pop().split(";").shift();
+  return localStorage.getItem("score");
 }
 
 // Show your highest score
-function showScore() {
+function showTopScore() {
   let score = 0;
   // Show score "0" if undefined
-  if (getScore("score") !== undefined) {
-    score = getScore("score");
+  if (getScore() !== undefined) {
+    score = getScore();
   }
   window.alert(`Your highest score is ${score} WPM!`);
 }
@@ -118,8 +109,8 @@ function startTimer(duration, display) {
       wpmDisplay.textContent = `${accuracy} WPM`;
 
       // Store accuracy
-      if (accuracy > getScore("score")) {
-        setScore(accuracy);
+      if (accuracy > getScore()) {
+        saveScore(accuracy);
       }
     }
   }, 1000);
