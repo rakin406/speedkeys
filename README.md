@@ -3,6 +3,8 @@
 WPM (Words Per Minute) counter and visualizer inspired by various speed typing
 web applications.
 
+Site: https://rakin406.github.io/speedkeys/
+
 ## Authors
 
 Rakin Rahman
