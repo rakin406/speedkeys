@@ -1,32 +1,12 @@
-## Description
+# SpeedKeys
 
-WPM (Words Per Minute) counter and visualizer inspired by various typing
+WPM (Words Per Minute) counter and visualizer inspired by various speed typing
 web applications.
 
-Framework used: [Nest](https://github.com/nestjs/nest)
+## Authors
 
-## Running the app
+Rakin Rahman
 
-```bash
-# development
-$ npm run start
+## License
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
+This project is licensed under the MIT License - see the LICENSE.md file for details
